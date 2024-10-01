@@ -17,13 +17,14 @@
   setClient(client);
 </script>
 
-<style>
-  .centrify {
-    margin: 0 auto; 
-  }
-</style>
 
 <h5>{appTitle}</h5>
 <div class="centrify">
   <Todo />
 </div>
+
+  <style>
+    .centrify {
+      text-align: center;
+    }
+  </style>

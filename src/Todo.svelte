@@ -18,7 +18,6 @@
     mutation($todoEdit: String!) {
       createTodo(input: { todo: { title: $todoEdit, done: false } }) {
         todo {
-          id
           title
           done
         }
@@ -45,16 +44,10 @@
         console.error("error: ", e);
       });
   }
+//リストのボタンをクリックでリスト削除/リストアップを操作できる
 </script>
 
-<style>
-  .done {
-    text-decoration: line-through;
-  }
-</style>
-
-<div style="text-align:center">
-
+<div>
   <h2>Todos</h2>
   <form on:submit|preventDefault={addTodo}>
     <input placeholder="new todo" bind:value={todoEdit} />
@@ -68,9 +61,14 @@
     {#each data.data['allTodos']['nodes'] as todo, i}
       <p class:done={todo.done}>{todo.title}</p>
     {/each}
-
   {:catch e}
     {e}
   {/await}
-
 </div>
+
+<style>
+  .done {
+    text-decoration: line-through;
+  }
+</style>
+
