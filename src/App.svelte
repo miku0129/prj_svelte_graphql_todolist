@@ -1,0 +1,29 @@
+<script>
+  import ApolloClient from "apollo-boost";
+  import { setClient } from "svelte-apollo";
+  import Todo from "./Todo.svelte";
+
+  export let appTitle;
+
+  const client = new ApolloClient({
+    uri: "http://localhost:5050/graphql",
+
+    onError: ({ networkError, graphQLErrors }) => {
+      console.log("graphQLErrors", graphQLErrors);
+      console.log("networkError", networkError);
+    }
+  });
+
+  setClient(client);
+</script>
+
+<style>
+  .centrify {
+    margin: 0 auto; 
+  }
+</style>
+
+<h5>{appTitle}</h5>
+<div class="centrify">
+  <Todo />
+</div>
