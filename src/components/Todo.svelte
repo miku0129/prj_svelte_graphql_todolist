@@ -1,6 +1,6 @@
 <script>
   import { getClient, query, mutate } from "svelte-apollo";
-  import {GETTODO, ADDTODO, DELETETODO } from "./../utils/index.js"
+  import {GETTODO, ADDTODO, DELETETODO, CHECKTODO, UNCHECKTODO } from "./../utils/index.js"
 
   let todoEdit = "";
   const client = getClient();
@@ -35,6 +35,23 @@
         console.error("error: ", e);
       });
   }
+  function checkTodo(id, hasDone){
+    const checkTodoCommand = !hasDone ? CHECKTODO : UNCHECKTODO; 
+    mutate(client, {mutation: checkTodoCommand, 
+      variables: {
+        id, 
+        hasDone
+      }
+    })
+    .then(data => {
+        todoEdit = "";
+        todoOp.refetch();
+      })
+      .catch(e => {
+        console.error("error: ", e);
+      });
+
+  }
 //リストのボタンをクリックでリスト削除/リストアップを操作できる
 </script>
 
@@ -51,7 +68,10 @@
 
     {#each data.data['allTodos']['nodes'] as todo, i}
     <div class="todo-container">
-      <p class:done={todo.done}>{todo.title}</p>
+      <input type="checkbox" id={i} name={i} on:click={()=>{checkTodo(todo.id, todo.done)}}/>
+      <label for={i} >
+        <p class:done={todo.done}>{todo.title}</p>
+      </label>
       <button on:click={()=> {deleteTodo(todo.id)}}>delete</button>
     </div>
     {/each}

@@ -23,6 +23,30 @@ export const ADDTODO = gql`
   }
 `;
 
+export const CHECKTODO = gql`
+  mutation ($id: Int!) {
+    updateTodoById(input: { id: $id, todoPatch: { done: true } }) {
+      todo {
+        id
+        title
+        done
+      }
+    }
+  }
+`;
+export const UNCHECKTODO = gql`
+  mutation ($id: Int!) {
+    updateTodoById(input: { id: $id, todoPatch: { done: false } }) {
+      todo {
+        id
+        title
+        done
+      }
+    }
+  }
+`;
+
+
 export const DELETETODO = gql`
   mutation ($id: Int!) {
     deleteTodoById(input: { id: $id }) {
