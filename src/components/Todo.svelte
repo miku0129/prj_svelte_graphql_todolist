@@ -52,7 +52,6 @@
       });
 
   }
-//リストのボタンをクリックでリスト削除/リストアップを操作できる
 </script>
 
 <div class="todos-container">
@@ -68,11 +67,15 @@
 
     {#each data.data['allTodos']['nodes'] as todo, i}
     <div class="todo-container">
-      <input type="checkbox" id={i} name={i} on:click={()=>{checkTodo(todo.id, todo.done)}}/>
+      {#if todo.done}
+      <input class="todo-container-content" type="checkbox" id={i} name={i} on:click={()=>{checkTodo(todo.id, todo.done)}} checked/>
+      {:else}
+      <input class="todo-container-content" type="checkbox" id={i} name={i} on:click={()=>{checkTodo(todo.id, todo.done)}}/>
+      {/if}
       <label for={i} >
         <p class:done={todo.done}>{todo.title}</p>
       </label>
-      <button on:click={()=> {deleteTodo(todo.id)}}>delete</button>
+      <i class="fa-solid fa-trash todo-container-content" on:click={()=> {deleteTodo(todo.id)}} on:keydown></i>
     </div>
     {/each}
   {:catch e}
@@ -81,7 +84,7 @@
 </div>
 
 <style>
-  button{
+  button, i{
     cursor: pointer;
   }
   .todos-container{
@@ -94,6 +97,12 @@
     display: flex;
     gap: 10px;
     justify-content: center;
+  }
+  .todo-container{
+    display: flex;
+  }
+  .todo-container-content{
+    margin: auto 0;
   }
   .done {
     text-decoration: line-through;
