@@ -19,12 +19,4 @@
 
 
 <h5>{appTitle}</h5>
-<div class="centrify">
   <Todo />
-</div>
-
-  <style>
-    .centrify {
-      text-align: center;
-    }
-  </style>
