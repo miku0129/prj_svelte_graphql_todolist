@@ -1,7 +1,7 @@
 <script>
   import ApolloClient from "apollo-boost";
   import { setClient } from "svelte-apollo";
-  import Todo from "./Todo.svelte";
+  import Todo from "./components/Todo.svelte";
 
   export let appTitle;
 

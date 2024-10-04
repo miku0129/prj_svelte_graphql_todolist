@@ -1,29 +1,6 @@
 <script>
   import { getClient, query, mutate } from "svelte-apollo";
-  import { gql } from "apollo-boost";
-
-  const GETTODO = gql`
-    {
-      allTodos {
-        nodes {
-          id
-          title
-          done
-        }
-      }
-    }
-  `;
-
-  const ADDTODO = gql`
-    mutation($todoEdit: String!) {
-      createTodo(input: { todo: { title: $todoEdit, done: false } }) {
-        todo {
-          title
-          done
-        }
-      }
-    }
-  `;
+  import {GETTODO, ADDTODO } from "./../utils/index.js"
 
   let todoEdit = "";
   const client = getClient();
