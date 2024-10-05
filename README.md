@@ -6,6 +6,8 @@ Simple to do app created for demonstration purposes. Uses Svelte and GraphQL.
 
 # svelte app
 
+![app-image](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGRqZnV4YWRtcGk4bzFiODNiNzVoZWowZms5ZzdvcmFhNHU3bzdrdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SQhCwbAq4tmmzs0cMl/giphy.gif)
+
 Before excute client, Graqhql server is required.
 If not yet, check [this](https://techformist.com/spin-up-your-own-local-graphql-server-within-15-min/).
 
