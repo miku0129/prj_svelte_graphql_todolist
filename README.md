@@ -1,4 +1,4 @@
-Simple to do app created for demonstration purposes. Uses Svelte and GraphQL.
+Simple to-do app created using with Svelte and GraphQL.
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
