@@ -106,6 +106,7 @@
   }
   .done {
     text-decoration: line-through;
+    color: red; 
   }
 </style>
 
