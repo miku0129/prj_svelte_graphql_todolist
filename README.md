@@ -9,6 +9,10 @@ Simple to do app created for demonstration purposes. Uses Svelte and GraphQL.
 Before excute client, Graqhql server is required.
 If not yet, check [this](https://techformist.com/spin-up-your-own-local-graphql-server-within-15-min/).
 
+```bash
+npx postgraphile -c 'postgres://<user name>:<pass>@localhost/<database name>' --watch -p 5050 --cors
+```
+
 ↑You need to set 'id' as <strong>primary key</strong>. Otherwise CRUD operation is not avairable.  
 
 ## Get started
